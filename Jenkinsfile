@@ -1,13 +1,7 @@
 pipeline {
     agent {
-        label 'agent1'
+        label 'maven'
     }
-    }
-    environment {
-        target_user = "ec2-user"
-        target_server = "172.31.95.155"
-    }
-
     options {
         timeout(10)
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')
@@ -74,9 +68,6 @@ pipeline {
     post {
         always {
             deleteDir()
-        }
-        failure {
-            echo "sendmail -s Maven Job Failed recipients@mycompany.com"
         }
         success {
             echo "The job is successful"
