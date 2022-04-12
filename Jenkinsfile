@@ -2,8 +2,6 @@ pipeline {
     agent {
         label 'agent1'
     }
-    tools {
-        maven 'maven362'
     }
     environment {
         target_user = "ec2-user"
